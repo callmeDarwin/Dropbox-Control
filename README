@@ -1,0 +1,30 @@
+History: 
+I ran into a problem where I couldn't ssh into my server because of a router problem and needed to restart a service.  I knew that dropbox on the server was still working so I decided that it would be nice to be able to control the server by just putting files into Dropbox.
+
+Installing:
+
+I found 'incron' a program that will monitor directories for file changes and involks an command.
+
+My incrontab looks something like this:
+
+<Dropbox Path>/linux_control IN_MODIFY,IN_CLOSE_WRITE,IN_MOVE <PATH>/dbc $@ $#
+
+
+Then all you do is put a file with the name being the command with '.' for spaces in the <Dropbox Path>/linux_control/ folder (ie apache2.restart restarts the apache2 server).
+
+You need to also setup you sudoers to bypass the password prompting.
+
+I am hoping to be able to have output from the command put into a log file but that doesn't seem to be working just yet.
+
+The dbc script simply takes the second parameter as the file name and parses it and executed it.  The first parameter contains the <Dropbox Path> for the logging.
+
+Example:
+
+dbc <Dropbox Path> apache2.restart
+
+I know this a very simple project and script but I would like to expand it to allow for other features.
+
+Suggestions are greatly encouraged.
+
+Darwin
+dcweyh@gmail.com
