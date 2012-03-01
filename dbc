@@ -1,0 +1,8 @@
+#!/bin/bash
+CMD="sudo /etc/init.d/"${2//./ }" >"$1"/log/"$2".log  2>&1" 
+echo $CMD
+rm $1"/"$2
+${CMD}
+
+
+
