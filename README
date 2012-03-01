@@ -3,7 +3,7 @@ I ran into a problem where I couldn't ssh into my server because of a router pro
 
 Installing:
 
-I found 'incron' a program that will monitor directories for file changes and involks an command.
+I found 'incron' a program that will monitor directories for file changes and invokes an command.
 
 My incrontab looks something like this:
 
